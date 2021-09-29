@@ -1,0 +1,53 @@
+* {
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.col {
+  padding: 2rem;
+  margin-top: 1rem;
+  background-color: aliceblue;
+}
+h1 {
+  color: midnightblue;
+}
+
+#instructions {
+  border-top: 2px dashed black;
+}
+.form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+input {
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  width: 60%;
+}
+button {
+  padding: 10px 20px;
+  background-color: cornflowerblue;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  margin-left: 1rem;
+}
+button:hover {
+  background-color: royalblue;
+}
+
+#prevGuess {
+  display: none;
+  padding: 1rem;
+  background-color: beige;
+}
+#userHint{
+  display: none;
+}
