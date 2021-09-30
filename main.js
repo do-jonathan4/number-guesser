@@ -1,5 +1,5 @@
 let num;
-let attempts = 3
+let attempts = 10
 const userInput = document.getElementById('userInput')
 const userForm = document.getElementById('userForm')
 const prevGuess = document.getElementById('prevGuess')
@@ -11,6 +11,7 @@ const restartGame = document.getElementById('restartGame')
 
 window.addEventListener('DOMContentLoaded', genNum);
 userForm.addEventListener('submit', userSubmit)
+restartGame.addEventListener('click', gameReset)
 
 function genNum() {
   num = Math.floor(Math.random() * 100);
@@ -25,16 +26,17 @@ function userSubmit(event) {
   }
 
   prevGuess.style.display = 'block'
-  userHint.style.display = 'block'
   prevGuess.textContent = prevGuess.textContent + ' ' + userNum
   userClue(num, userNum)
 
   attempts--
   if (attempts === 0) gameLoss()
+  if (userNum == num) gameWin()
   userForm.reset()
 }
 
 function userClue(num, userNum) {
+  userHint.style.display = 'block'
   if (userNum < num) {
     userHint.textContent = 'Guess is too low'
   } else if (userNum > num) {
@@ -48,4 +50,19 @@ function gameLoss() {
   userInput.disabled = true
   endGame.style.display = 'block'
   userWin.style.display = 'none'
+}
+
+function gameWin() {
+  userInput.disabled = true
+  endGame.style.display = 'block'
+  userLose.style.display = 'none'
+}
+
+function gameReset() {
+  endGame.style.display = 'none'
+  userHint.style.display = 'none'
+  prevGuess.style.display = 'none'
+  prevGuess.textContent = 'Guesses: '
+  userInput.disabled = false
+  genNum()
 }
