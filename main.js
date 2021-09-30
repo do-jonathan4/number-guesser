@@ -14,6 +14,7 @@ userForm.addEventListener('submit', userSubmit)
 
 function genNum() {
   num = Math.floor(Math.random() * 100);
+  console.log(num)
 }
 
 function userSubmit(event) {
@@ -25,16 +26,17 @@ function userSubmit(event) {
   }
 
   prevGuess.style.display = 'block'
-  userHint.style.display = 'block'
   prevGuess.textContent = prevGuess.textContent + ' ' + userNum
   userClue(num, userNum)
 
   attempts--
   if (attempts === 0) gameLoss()
+  if (userNum == num) gameWin()
   userForm.reset()
 }
 
 function userClue(num, userNum) {
+  userHint.style.display = 'block'
   if (userNum < num) {
     userHint.textContent = 'Guess is too low'
   } else if (userNum > num) {
@@ -48,4 +50,10 @@ function gameLoss() {
   userInput.disabled = true
   endGame.style.display = 'block'
   userWin.style.display = 'none'
+}
+
+function gameWin() {
+  userInput.disabled = true
+  endGame.style.display = 'block'
+  userLose.style.display = 'none'
 }
