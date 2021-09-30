@@ -1,5 +1,5 @@
 let num;
-let attempts = 3
+let attempts = 10
 const userInput = document.getElementById('userInput')
 const userForm = document.getElementById('userForm')
 const prevGuess = document.getElementById('prevGuess')
@@ -11,10 +11,10 @@ const restartGame = document.getElementById('restartGame')
 
 window.addEventListener('DOMContentLoaded', genNum);
 userForm.addEventListener('submit', userSubmit)
+restartGame.addEventListener('click', gameReset)
 
 function genNum() {
   num = Math.floor(Math.random() * 100);
-  console.log(num)
 }
 
 function userSubmit(event) {
@@ -56,4 +56,13 @@ function gameWin() {
   userInput.disabled = true
   endGame.style.display = 'block'
   userLose.style.display = 'none'
+}
+
+function gameReset() {
+  endGame.style.display = 'none'
+  userHint.style.display = 'none'
+  prevGuess.style.display = 'none'
+  prevGuess.textContent = 'Guesses: '
+  userInput.disabled = false
+  genNum()
 }
